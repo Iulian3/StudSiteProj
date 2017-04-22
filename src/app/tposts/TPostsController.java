@@ -23,12 +23,12 @@ public class TPostsController {
 	 * list from database.
 	 * 
 	 */
-	@GET
-	public Viewable getPostsListPage()
-	{
-		
-	}
-	
+//	@GET
+//	public Viewable getPostsListPage()
+//	{
+//		
+//	}
+
 	/**
 	 * 
 	 * TODO: see what data to send to postview.jsp view.
@@ -36,10 +36,10 @@ public class TPostsController {
 	 * @return View for template 'app/views/tposts/postview.jsp'
 	 *  
 	 */
-	@GET
-	@Path("{postid}")
-	public Viewable getPostViewPage()
-	{
-		
-	}
+//	@GET
+//	@Path("{postid}")
+//	public Viewable getPostViewPage()
+//	{
+//		
+//	}
 }

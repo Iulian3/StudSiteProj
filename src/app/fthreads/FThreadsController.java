@@ -25,11 +25,11 @@ public class FThreadsController {
 	 * list from database.
 	 * 
 	 */
-	@GET
-	public Viewable getThreadsListPage()
-	{
-		
-	}
+//	@GET
+//	public Viewable getThreadsListPage()
+//	{
+//		
+//	}
 	
 	/**
 	 * 
@@ -40,10 +40,10 @@ public class FThreadsController {
 	 * <a href="https://jersey.java.net/documentation/latest/jaxrs-resources.html#d0e2496">Jersey Sub-resources</a>
 	 * 
 	 */
-	@GET
-	@Path("{threadid}")
-	public Class<app.tposts.TPostsController> dispatchWorkFPostsController()
-	{
-		return app.tposts.TPostsController.class;
-	}
+//	@GET
+//	@Path("{threadid}")
+//	public Class<app.tposts.TPostsController> dispatchWorkFPostsController()
+//	{
+//		return app.tposts.TPostsController.class;
+//	}
 }

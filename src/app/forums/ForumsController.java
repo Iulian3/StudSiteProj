@@ -14,11 +14,11 @@ public class ForumsController {
 	 * TODO: see if exist content to send to /app/views/forums/index.jsp 
 	 * 
 	 */
-	@GET
-	public Viewable getIndexPage()
-	{
-		
-	}
+//	@GET
+//	public Viewable getIndexPage()
+//	{
+//		
+//	}
 	
 	/**
 	 * 
@@ -28,11 +28,11 @@ public class ForumsController {
 	 * list from database.
 	 * 
 	 */
-	@Path("forums")
-	public Viewable getForumsListPage()
-	{
-		
-	}
+//	@Path("forums")
+//	public Viewable getForumsListPage()
+//	{
+//		
+//	}
 	
 	/**
 	 * 
@@ -43,9 +43,9 @@ public class ForumsController {
 	 * <a href="https://jersey.java.net/documentation/latest/jaxrs-resources.html#d0e2496">Jersey Sub-resources</a>
 	 * 
 	 */
-	@Path("forums/{forumid}")
-	public Class<app.fthreads.FThreadsController> dispatchWorkFThreadsController()
-	{
-		return app.fthreads.FThreadsController.class;
-	}
+//	@Path("forums/{forumid}")
+//	public Class<app.fthreads.FThreadsController> dispatchWorkFThreadsController()
+//	{
+//		return app.fthreads.FThreadsController.class;
+//	}
 }
