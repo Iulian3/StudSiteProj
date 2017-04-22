@@ -1,7 +1,8 @@
+
 CREATE SCHEMA studsitedb;
 
 CREATE TABLE studsitedb.users (
-  pk_Userid int(11),
+  pk_Userid int(11) auto_increment,
   
   UsrFirstName varchar(255),
   UsrLastName varchar(255),
@@ -13,7 +14,7 @@ CREATE TABLE studsitedb.users (
 
 
 CREATE TABLE studsitedb.forums (
-	pk_forumID int(11),
+	pk_forumID int(11) auto_increment,
 	
 	title varchar(500),
 	creationDate date,
@@ -24,7 +25,7 @@ CREATE TABLE studsitedb.forums (
 
 
 CREATE TABLE studsitedb.threads (
-  pk_threadID int(11),
+  pk_threadID int(11) auto_increment,
   
   title varchar(500),
   shortDescription varchar(1000),
@@ -39,7 +40,7 @@ CREATE TABLE studsitedb.threads (
 );
 
 CREATE TABLE studsitedb.posts (
-  pk_postID int(11),
+  pk_postID int(11) auto_increment,
   
   threadID int(11),
   userID int(11),

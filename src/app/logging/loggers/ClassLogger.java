@@ -1,9 +1,7 @@
 package app.logging.loggers;
 
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+
 import java.util.logging.FileHandler;
 import java.util.logging.Formatter;
 import java.util.logging.Level;
@@ -15,21 +13,31 @@ import javax.inject.Inject;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
 
 
-public class ClassLogger implements app.logging.Logger{
+public class ClassLogger implements app.logging.ILogger{
 	
-	private String msClassName = "";
 	private Formatter moFormatter = null;
 	private java.util.logging.Logger moLogger = null;
-	private static boolean mbOldDirTreeDeleted = false;
+	private static boolean mbOldDirTreeDeleted = false;  // ensure
+	private boolean mbIsConfigured = false;
 	
-	
+	/**
+	 * 
+	 * @param oFormatter
+	 * 
+	 * 	Set Formatter.
+	 * 
+	 * 	The folder: {system temporary folder}/StudSiteProj will keep all app logs.
+	 *	It's hierarchy will correspond to project package hierarchy.
+	 *
+	 *	Delete the directory tree from last web app run. 
+	 */
 	@Inject
 	public ClassLogger(Formatter oFormatter)
 	{
 		moFormatter = oFormatter;
 		
 		if (mbOldDirTreeDeleted == false)
-		{
+		{	
 			try {
 				FileUtils.deleteDirectory(new File(System.getProperty("java.io.tmpdir") + "StudSiteProj"));
 			} catch (Exception e) {
@@ -40,11 +48,13 @@ public class ClassLogger implements app.logging.Logger{
 		}
 	}
 	
+	/**
+	 * 	@param sClassName absolute class name (ex.: app.logging.loggers.ClassLogger)
+	 * 
+	 */
 	@Override
 	public void configureLogger(String sClassName) {
 		
-		msClassName = sClassName;
-
 		try
 		{
 			String sLogFilePath = System.getProperty("java.io.tmpdir") 
@@ -53,8 +63,8 @@ public class ClassLogger implements app.logging.Logger{
 			
 			String sLogFilePathPattern = sLogFilePath + "/log%g.log";
 			
+			// create new directory structure
 			File oFile = new File(sLogFilePath);
-			
 			oFile.mkdirs();
 			
 			moLogger = Logger.getLogger(sClassName);
@@ -62,9 +72,11 @@ public class ClassLogger implements app.logging.Logger{
 			FileHandler oFileHandler = new FileHandler(sLogFilePathPattern, 1000000, 1, true);
 			
 			oFileHandler.setFormatter(moFormatter);
+			
 			moLogger.addHandler(oFileHandler);
-	
 			moLogger.setLevel(Level.ALL);
+			
+			mbIsConfigured = true;
 			
 		} catch (Exception oEx)
 		{
@@ -77,5 +89,9 @@ public class ClassLogger implements app.logging.Logger{
 		return moLogger;
 	}
 
+	@Override
+	public boolean isConfigured() {
+		return mbIsConfigured;
+	}
 
 }

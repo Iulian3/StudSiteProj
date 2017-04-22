@@ -1,11 +1,19 @@
 package app.forums;
 
+import java.util.List;
+
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
-import org.glassfish.jersey.server.mvc.Viewable;
-
-public class ForumsController {
+@Path("/")
+public class ForumsController{
+	
+	
+	@Inject IForumsDAO moForumsDAO;
+	@Inject app.logging.ILogger moLogger;
 	
 	/**
 	 * 
@@ -28,11 +36,26 @@ public class ForumsController {
 	 * list from database.
 	 * 
 	 */
-//	@Path("forums")
-//	public Viewable getForumsListPage()
-//	{
-//		
-//	}
+	private void setupLogger()
+	{
+		if (!moLogger.isConfigured())
+			moLogger.configureLogger(ForumsController.class.getName());
+	}
+	
+	
+	// TODO: forward to jsp the response
+	
+	@Path("forums")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Forum> getForumsListPage()
+	{
+		setupLogger();
+
+		List<Forum> list = moForumsDAO.getForumsList();
+		
+		return list;
+	}
 	
 	/**
 	 * 

@@ -11,33 +11,33 @@ import java.util.Date;
  */
 public class Forum {
 
-	private int miForumId;
+	private long miForumId;
 	private String msTitle;
 	private Date moCreationDate;
 	private String msShortDescription;
 	
-	public int getMiForumId() {
+	public long getForumId() {
 		return miForumId;
 	}
-	public void setMiForumId(int miForumId) {
+	public void setForumId(long miForumId) {
 		this.miForumId = miForumId;
 	}
-	public String getMsTitle() {
+	public String getTitle() {
 		return msTitle;
 	}
-	public void setMsTitle(String msTitle) {
+	public void setTitle(String msTitle) {
 		this.msTitle = msTitle;
 	}
-	public Date getMoCreationDate() {
+	public Date getCreationDate() {
 		return moCreationDate;
 	}
-	public void setMoCreationDate(Date moCreationDate) {
+	public void setCreationDate(Date moCreationDate) {
 		this.moCreationDate = moCreationDate;
 	}
-	public String getMsShortDescription() {
+	public String getShortDescription() {
 		return msShortDescription;
 	}
-	public void setMsShortDescription(String msShortDescription) {
+	public void setShortDescription(String msShortDescription) {
 		this.msShortDescription = msShortDescription;
 	}
 	
